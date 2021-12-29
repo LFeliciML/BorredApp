@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.borredapp.R
-import com.example.borredapp.ui.components.ActivitiesActivity.viewmodel.RandomActivitieViewModel
+import com.example.borredapp.ui.components.ActivitiesActivity.viewmodel.SuggestionViewModel
 
-class RandomActivitieFragment : Fragment() {
+class SuggestionFragment : Fragment() {
 
 
-    private lateinit var viewModel: RandomActivitieViewModel
+    private lateinit var viewModel: SuggestionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

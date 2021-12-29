@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.borredapp.R
 import com.example.borredapp.databinding.ActivityMainBinding
+import com.example.borredapp.ui.components.mainActivity.fragments.InitialFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,5 +15,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        this.title="Borred App"
+        supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView,InitialFragment()).commit()
+
+
     }
+
 }
