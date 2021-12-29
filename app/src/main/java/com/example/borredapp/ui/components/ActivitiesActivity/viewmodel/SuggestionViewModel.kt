@@ -1,4 +1,4 @@
-package com.example.borredapp.ui.component.activitiesactivity.viewmodel
+package com.example.borredapp.ui.components.ActivitiesActivity.viewmodel
 
 import androidx.lifecycle.ViewModel
 

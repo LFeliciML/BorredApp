@@ -4,8 +4,13 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
+
+    compileSdk 31
+=======
     compileSdk 31
 
+>>>>>>> main
 
     defaultConfig {
         applicationId "com.example.borredapp"
@@ -29,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding = true
+    }
+
 }
 
 dependencies {
@@ -37,7 +46,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation 'androidx.fragment:fragment-ktx:1.3.6'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -45,8 +54,8 @@ dependencies {
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
-    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2')
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
 
