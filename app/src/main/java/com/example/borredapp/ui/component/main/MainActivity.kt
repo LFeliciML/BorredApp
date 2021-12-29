@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         this.title="Borred App"
 
-        supportFragmentManager.beginTransaction().add(R.id.fragmentMainContainer,InitialFragment())
+        supportFragmentManager.beginTransaction().add(R.id.fragmentMainContainer,InitialFragment()).commit()
 
         /*No recuerdo como lo hizo el, era algo asi
         supportFragmentManager.commit {
