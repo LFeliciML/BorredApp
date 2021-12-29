@@ -1,8 +1,8 @@
-package com.example.borredapp.data.model
+package com.example.borredapp.data
 
 import com.google.gson.annotations.SerializedName
 
-data class ActivityResp(
+data class ActivitieResponse(
     val activity: String,
     @SerializedName("accessibility")
     val access:Float,
