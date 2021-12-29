@@ -1,13 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.components.mainActivity.fragments.InitialFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:text="NOT BORED"
+        app:layout_constraintBottom_toTopOf="@+id/tv_textfield"
+        app:layout_constraintEnd_toEndOf="@+id/et_numberPersons"
+        app:layout_constraintStart_toStartOf="@+id/et_numberPersons" />
+
+    <EditText
+        android:id="@+id/et_numberPersons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/b_inside"
+        app:layout_constraintEnd_toEndOf="@+id/b_inside"
+        app:layout_constraintStart_toStartOf="@+id/b_inside"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tv_textfield"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Participantes"
+        app:layout_constraintBottom_toTopOf="@+id/et_numberPersons"
+        app:layout_constraintStart_toStartOf="@+id/et_numberPersons" />
+
+    <Button
+        android:id="@+id/b_inside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="49dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/link_conditions"
+        app:layout_constraintEnd_toEndOf="@+id/link_conditions"
+        app:layout_constraintStart_toStartOf="@+id/link_conditions" />
+
+    <TextView
+        android:id="@+id/link_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="209dp"
+        android:text="Terminos y condiciones"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
