@@ -4,13 +4,9 @@ plugins {
 }
 
 android {
-<<<<<<< HEAD
 
     compileSdk 31
-=======
-    compileSdk 31
 
->>>>>>> main
 
     defaultConfig {
         applicationId "com.example.borredapp"
