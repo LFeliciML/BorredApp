@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.components.ActivitiesActivity.ActivitiesActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerViewActivities"
+        android:name="com.example.borredapp.ui.components.ActivitiesActivity.fragments.ListActivitiesFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BorredApp</string>
+    <string name="not_bored">NOT BORED</string>
+    <string name="terms_y_conditions"><u>Terms y conditions</u></string>
+    <string name="start">Start</string>
+    <string name="participants">Participants</string>
 </resources>
