@@ -11,6 +11,8 @@ class ListActivitiesViewModel : ViewModel() {
     //
     //activities a constans Mauro
     //recyclerView activities Lucas
+    //
+    //Filtrar participants
 
 
 }
