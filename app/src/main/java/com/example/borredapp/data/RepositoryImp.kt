@@ -4,7 +4,6 @@ import com.example.borredapp.data.network.APIServiceBored
 import com.example.borredapp.utils.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class RepositoryImp : Repository {
 
