@@ -1,43 +1,55 @@
 package com.example.borredapp.domain
 
-import com.example.borredapp.data.ActivitieResponse
+import com.example.borredapp.data.Repository
+import com.example.borredapp.data.remoteDataModel.network.ActivitieResponse
 import com.example.borredapp.data.RepositoryImp
+import com.example.borredapp.utils.ConverterUrl
 
 
 class ActivityInteractor(
-    private val repositoryImp: RepositoryImp
+    private val repository: Repository
 ) {
+    private val converterUrl = ConverterUrl()
 
-    suspend fun getActivityRandom():ActivitieResponse?{
-        return repositoryImp.getRandomActivity()
+    //This variable contains the number of participants, retrieves them from shared preferences
+    private val participants:Int = repository.getParticipantsSharedPreferences()
+
+
+    suspend fun getActivityRandom(): ActivitieResponse?{
+        return repository.getRandomActivity()
     }
 
-    suspend fun getActivityByType(type : String ):ActivitieResponse?{
-        return repositoryImp.getActivityByType(type)
+    suspend fun getActivityByType(type : String): ActivitieResponse?{
+        return repository.getActivityByType(converterUrl.getUrlByTypes(participants,type))
     }
 
-    suspend fun getActivityByKey(key : String):ActivitieResponse?{
-        return repositoryImp.getActivityByKey(key)
+    suspend fun getActivityByKey(key : String): ActivitieResponse?{
+        return repository.getActivityByKey(converterUrl.getUrlByKey(participants,key))
     }
 
-    suspend fun getActivityByParticipants(participants : Int ):ActivitieResponse?{
-        return repositoryImp.getActivityByParticipants(participants.toString())
+    suspend fun getActivityByParticipants(participants : Int ): ActivitieResponse?{
+        return repository.getActivityByParticipants(participants.toString())
     }
 
-    suspend fun getActivityByPrice(price:String):ActivitieResponse?{
-        return repositoryImp.getActivityByPrice(price)
+    suspend fun getActivityByPrice(price:Float): ActivitieResponse?{
+        return repository.getActivityByPrice(converterUrl.getUrlByPrice(participants,price))
     }
 
-    suspend fun getActivityByPriceRange( minPrice : String , maxPrice : String):ActivitieResponse?{
-        return repositoryImp.getActivityByPriceRange(minPrice,maxPrice)
+    suspend fun getActivityByPriceRange( minPrice : Float , maxPrice : Float): ActivitieResponse?{
+        return repository.getActivityByPriceRange(
+                converterUrl.getUrlByPriceRange(participants,minPrice,maxPrice))
     }
 
-    suspend fun getActivityByAccessibility(accessibility : String):ActivitieResponse?{
-        return repositoryImp.getActivityByAccessibility(accessibility)
+    suspend fun getActivityByAccessibility(accessibility : Float): ActivitieResponse?{
+        return repository.getActivityByAccessibility(
+                converterUrl.getActivityByAccessibility(participants, accessibility))
     }
 
-    suspend fun getActivityByAccessibilityRange(minAccessibility : String, maxAccessibility : String):ActivitieResponse?{
-        return repositoryImp.getActivityByAccessibilityRange(minAccessibility,maxAccessibility)
+    suspend fun getActivityByAccessibilityRange(
+        minAccessibility : Float,
+        maxAccessibility : Float): ActivitieResponse?{
+        return repository.getActivityByAccessibilityRange(
+            converterUrl.getActivityByAccessibilityRange(participants, minAccessibility, maxAccessibility))
     }
 
 

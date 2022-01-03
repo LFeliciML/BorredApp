@@ -1,16 +1,20 @@
 package com.example.borredapp.data
 
-import com.example.borredapp.data.network.APIServiceBored
+import com.example.borredapp.data.localDataModel.SharedPreferencesProvider
+import com.example.borredapp.data.remoteDataModel.network.APIServiceBored
+import com.example.borredapp.data.remoteDataModel.network.ActivitieResponse
 import com.example.borredapp.utils.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
-class RepositoryImp : Repository {
+class RepositoryImp(
+    private val localDataProviders: SharedPreferencesProvider
+) : Repository {
 
     override suspend fun getRandomActivity(): ActivitieResponse? {
         val call = getRetrofit().create(APIServiceBored::class.java)
         .getRandomActivity(ACTIVITY_RANDOM)
+
         val response = call.body()
 
         if (call.isSuccessful){
@@ -20,9 +24,10 @@ class RepositoryImp : Repository {
         }
     }
 
+
     override suspend fun getActivityByKey(key:String): ActivitieResponse? {
-        val call = getRetrofit().create(APIServiceBored::class.java).
-        getActivityByKey(SEARCH_BY_KEY+key)
+
+        val call = getRetrofit().create(APIServiceBored::class.java).getActivityByKey(key)
 
         val response = call.body()
 
@@ -33,9 +38,10 @@ class RepositoryImp : Repository {
         }
     }
 
+
     override suspend fun getActivityByType(type :String): ActivitieResponse? {
-       val call = getRetrofit().create(APIServiceBored::class.java).
-       getActivityByType(SEARCH_BY_TYPE + type)
+
+       val call = getRetrofit().create(APIServiceBored::class.java).getActivityByType(type)
 
         val response = call.body()
 
@@ -45,6 +51,7 @@ class RepositoryImp : Repository {
             return null
         }
     }
+
 
     override suspend fun getActivityByParticipants(participants: String): ActivitieResponse? {
         val call = getRetrofit().create(APIServiceBored::class.java).
@@ -59,9 +66,10 @@ class RepositoryImp : Repository {
         }
     }
 
+
     override suspend fun getActivityByPrice(price: String): ActivitieResponse? {
-        val call = getRetrofit().create(APIServiceBored::class.java).
-        getActivityByPrice(SEARCH_BY_PRICE + price)
+
+        val call = getRetrofit().create(APIServiceBored::class.java).getActivityByPrice(price)
 
         val response = call.body()
 
@@ -72,13 +80,10 @@ class RepositoryImp : Repository {
         }
     }
 
-    override suspend fun getActivityByPriceRange(
-        minPrice: String,
-        maxPrice: String
-    ): ActivitieResponse? {
-        val call = getRetrofit().create(APIServiceBored::class.java).
-        getActivityByPriceRange(SEARCH_BY_PRICE_RANGE+minPrice+
-                                          BETWEEN_PRICE_RANGE+maxPrice)
+
+    override suspend fun getActivityByPriceRange(query:String): ActivitieResponse? {
+
+        val call = getRetrofit().create(APIServiceBored::class.java).getActivityByPriceRange(query)
 
         val response = call.body()
 
@@ -89,9 +94,11 @@ class RepositoryImp : Repository {
         }
     }
 
+
     override suspend fun getActivityByAccessibility(accessibility: String): ActivitieResponse? {
+
         val call = getRetrofit().create(APIServiceBored::class.java).
-        getActivityByAccessibility(SEARCH_BY_ACCESSIBILITY + accessibility)
+        getActivityByAccessibility(accessibility)
 
         val response = call.body()
 
@@ -102,13 +109,11 @@ class RepositoryImp : Repository {
         }
     }
 
-    override suspend fun getActivityByAccessibilityRange(
-        minAccessibility: String,
-        maxAccessibility: String
-    ): ActivitieResponse? {
+
+    override suspend fun getActivityByAccessibilityRange(query: String): ActivitieResponse? {
+
         val call = getRetrofit().create(APIServiceBored::class.java).
-        getActivityByAccessibilityRange(SEARCH_BY_ACCESSIBILITY_RANGE + minAccessibility +
-                                                        BETWEEN_ACCESSIBILITY_RANGE + maxAccessibility)
+        getActivityByAccessibilityRange(query)
 
         val response = call.body()
 
@@ -120,9 +125,17 @@ class RepositoryImp : Repository {
     }
 
 
+    //This function obtains the number of participants
+    override fun getParticipantsSharedPreferences(): Int {
+        return localDataProviders.getParticipants()
+    }
+
+
+    //Instance retrofit.
+    //This function will be used by the suspended functions of this class.
     private fun getRetrofit(): Retrofit {
-    return Retrofit.Builder().baseUrl(BASE_URL)
-    .addConverterFactory(GsonConverterFactory.create()).build()
+        return Retrofit.Builder().baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
 }

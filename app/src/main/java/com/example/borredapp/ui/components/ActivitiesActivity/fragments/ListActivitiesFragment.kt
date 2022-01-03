@@ -11,6 +11,8 @@ import com.example.borredapp.ui.components.ActivitiesActivity.viewmodel.ListActi
 
 class ListActivitiesFragment : Fragment() {
 
+
+
     private lateinit var viewModel: ListActivitiesViewModel
 
     override fun onCreateView(

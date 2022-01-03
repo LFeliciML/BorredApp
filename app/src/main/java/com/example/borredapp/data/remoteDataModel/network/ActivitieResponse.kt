@@ -1,4 +1,4 @@
-package com.example.borredapp.data
+package com.example.borredapp.data.remoteDataModel.network
 
 data class ActivitieResponse(
     val activity: String,

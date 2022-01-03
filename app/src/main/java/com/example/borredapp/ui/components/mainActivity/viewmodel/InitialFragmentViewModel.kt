@@ -9,9 +9,7 @@ class InitialFragmentViewModel(private val interactor: ActivityInteractor) : Vie
     //Para mi este viewmodel y el de conditions estan de mas
 
     suspend fun pruebaApi(){
-
-        println(interactor.getActivityRandom())
-
+        //println(interactor.getActivityRandom())
     }
 
 

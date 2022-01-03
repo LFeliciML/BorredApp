@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.borredapp.R
 import com.example.borredapp.data.RepositoryImp
+import com.example.borredapp.data.localDataModel.SharedPreferencesProvider
 import com.example.borredapp.databinding.InitialFragmentBinding
 import com.example.borredapp.domain.ActivityInteractor
 import com.example.borredapp.ui.components.ActivitiesActivity.ActivitiesActivity
@@ -34,14 +35,6 @@ class InitialFragment : Fragment() {
             startActivity(intent)
         }
 
-        val interactor = ActivityInteractor(RepositoryImp())
-
-
-        lifecycleScope.launch(Dispatchers.Main) {
-//            viewModel.pruebaApi()
-            println(interactor.getActivityRandom())
-
-        }
 
         return binding.root
     }
