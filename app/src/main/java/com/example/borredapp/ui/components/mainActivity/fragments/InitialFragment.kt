@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.*
+import androidx.lifecycle.LifecycleOwner
 import com.example.borredapp.R
 import com.example.borredapp.databinding.InitialFragmentBinding
 import com.example.borredapp.ui.components.ActivitiesActivity.ActivitiesActivity
@@ -26,34 +27,28 @@ class InitialFragment : Fragment() {
     ): View? {
         binding = InitialFragmentBinding.inflate(layoutInflater)
 
-        //Event button Start
-        binding.buttonStart.setOnClickListener {
 
-            if (conditionsAprobed()) {
-                val insertValueUser = binding.etNumberPersons.text.toString()
+        //Observe viewModel
+        viewModel.runApp.observe(this.viewLifecycleOwner,{
+            if (it==true){
+                val intent = Intent(this.context, ActivitiesActivity::class.java)
+                startActivity(intent)
+            }
+        })
 
-                if (insertValueUser.isNullOrBlank()) {
-                    setSharedPreferences(0)
-                    runActivity()
-                } else {
-                    if (checkIsNumber(insertValueUser)) {
-                        runActivity()
-                    } else {
-                        Toast.makeText(
-                            this.context,
-                            "Los numeros deben ser mayores o iguales a 0.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            } else {
-                Toast.makeText(
-                    this.context, "Aceptar términos y condiciones",
-                    Toast.LENGTH_SHORT
-                ).show()
+        //Event button start
+        binding.buttonStart.setOnClickListener{
+
+            val insertValueUser = binding.etNumberPersons.text.toString()
+
+            if (conditionsAprobed() && insertValueUser.isNullOrBlank()){
+                viewModel.startApp(0)
+            } else if (conditionsAprobed() && checkIsNumber(insertValueUser)){
+                viewModel.startApp(insertValueUser.toInt())
             }
         }
 
+        //Start fragment terms and conditions.
         binding.linkConditions.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .add(R.id.fragmentContainerView, ConditionsFragment()).addToBackStack(null).commit()
@@ -63,18 +58,6 @@ class InitialFragment : Fragment() {
     }
 
 
-    //This function get sharedPreferences.
-    private fun setSharedPreferences(participants: Int) {
-        val editor = prefs.edit()
-        editor.putInt("PARTICIPANTS", participants)
-        editor.commit()
-    }
-
-    //This execute activities activity.
-    private fun runActivity() {
-        val intent = Intent(this.context, ActivitiesActivity::class.java)
-        startActivity(intent)
-    }
 
     //This function tries to convert String to int,
     // if the conversion fails, it throws an exception.
@@ -82,16 +65,13 @@ class InitialFragment : Fragment() {
         try {
             val participants = number.toInt() //If it cannot be converted, the exception is thrown at this point.
             if (participants >= 0) {
-                setSharedPreferences(participants) //set shared preferences.
                 return true
             }
+            Toast.makeText(
+                this.context, "No se permiten numeros negativos.", Toast.LENGTH_SHORT).show()
             return false
         } catch (e: NumberFormatException) {
-            Toast.makeText(
-                this.context,
-                "Solo se permite ingresar numeros enteros.",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(this.context, "Solo se permite ingresar numeros enteros.", Toast.LENGTH_SHORT).show()
             return false
         }
     }

@@ -6,28 +6,28 @@ import retrofit2.http.Url
 
 interface APIServiceBored {
 
-    @GET()
+    @GET
     suspend fun getRandomActivity(@Url path: String): Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByKey(@Url key : String) : Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByType(@Url type : String) : Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByParticipants(@Url participants :String) : Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByPrice(@Url price :String) : Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByPriceRange(@Url priceRange :String) : Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByAccessibility(@Url accessibility :String) : Response<ActivitieResponse?>
 
-    @GET()
+    @GET
     suspend fun getActivityByAccessibilityRange(@Url accessibilityRange :String) : Response<ActivitieResponse?>
 
 

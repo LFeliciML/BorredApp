@@ -1,15 +1,23 @@
 package com.example.borredapp.ui.components.mainActivity.viewmodel
 
-import android.content.Intent
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.borredapp.domain.ActivityInteractor
-import com.example.borredapp.ui.components.ActivitiesActivity.ActivitiesActivity
 import com.example.borredapp.utils.BorredApp
 
 class InitialFragmentViewModel() : ViewModel() {
 
-    val result = MutableLiveData<Boolean>()
 
+
+    val runApp = MutableLiveData<Boolean>()
+
+    fun startApp(participants: Int){
+        runApp.postValue(setSharedPreferences(participants))
+    }
+
+    //This function get sharedPreferences.
+     private fun setSharedPreferences(participants: Int):Boolean{
+        val editor = BorredApp.prefs.edit()
+        editor.putInt("PARTICIPANTS", participants)
+        return editor.commit()
+    }
 }
