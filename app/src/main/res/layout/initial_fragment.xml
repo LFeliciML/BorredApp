@@ -11,46 +11,46 @@
         android:id="@+id/guideline2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintGuide_percent="0.2"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintGuide_percent="0.1"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintGuide_percent="0.9"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintGuide_percent="0.4"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintGuide_percent="0.6"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/not_bored"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_dark_blue"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="@color/primary_dark_blue"
-        android:textAllCaps="false"
         android:typeface="monospace"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -58,47 +58,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
 
-    <TextView
-        android:id="@+id/tv_textfield"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/participants"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_margin="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_numberPersons"
-        app:layout_constraintEnd_toEndOf="@+id/et_numberPersons"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/et_numberPersons"
-        android:layout_width="327dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:maxLength="1"
-        android:paddingStart="10dp"
-        android:textColor="@color/black"
-        android:background="@drawable/edit_text_players"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <Button
         android:id="@+id/buttonStart"
         android:layout_width="327dp"
         android:layout_height="48dp"
-        android:layout_marginTop="128dp"
-        android:text="@string/start"
+        android:layout_marginTop="100dp"
         android:backgroundTint="@color/primary_dark_blue"
+        android:text="@string/start"
         android:textAllCaps="false"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -106,18 +72,56 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-    <!--Esto deberia ser un button sin fondo-->
+
     <TextView
         android:id="@+id/link_conditions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/terms_y_conditions"
+        android:text="@string/terms_and_conditions"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
+
+    <EditText
+        android:id="@+id/etNumberPersons"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="178dp"
+        android:background="#FFFFFF"
+        android:backgroundTintMode="add"
+        android:ems="10"
+        android:hapticFeedbackEnabled="false"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvParticipants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/participants"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/etNumberPersons"
+        app:layout_constraintStart_toStartOf="@+id/etNumberPersons" />
+
+    <CheckBox
+        android:id="@+id/checkBox_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/check_text_conditions"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
