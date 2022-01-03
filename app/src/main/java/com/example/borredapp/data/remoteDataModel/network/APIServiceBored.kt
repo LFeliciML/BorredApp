@@ -1,6 +1,5 @@
-package com.example.borredapp.data.network
+package com.example.borredapp.data.remoteDataModel.network
 
-import com.example.borredapp.data.ActivitieResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Url
