@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.*
-import androidx.lifecycle.Lifecycle
 import com.example.borredapp.R
 import com.example.borredapp.databinding.InitialFragmentBinding
 import com.example.borredapp.ui.components.ActivitiesActivity.ActivitiesActivity
 import com.example.borredapp.ui.components.mainActivity.viewmodel.InitialFragmentViewModel
-import com.example.borredapp.utils.BorredApp
 import com.example.borredapp.utils.BorredApp.Companion.prefs
 
 class InitialFragment : Fragment() {
@@ -30,7 +28,8 @@ class InitialFragment : Fragment() {
         binding = InitialFragmentBinding.inflate(layoutInflater)
         binding.buttonStart.setOnClickListener{
 
-            val insertUser = binding.etNumberPersons.text.toString()
+            if(conditionsAprobed()){
+                val insertUser = binding.etNumberPersons.text.toString()
 
             if (insertUser.isNullOrBlank()){
                     setSharedPreferences(0)
@@ -43,6 +42,10 @@ class InitialFragment : Fragment() {
                     "Los numeros deben ser mayores o iguales a 0.",
                     Toast.LENGTH_SHORT).show()
                 }
+            }
+            } else {
+                Toast.makeText(this.context,"Aceptar términos y condiciones",
+                Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -86,6 +89,10 @@ class InitialFragment : Fragment() {
         }
     }
 
+
+    private fun conditionsAprobed():Boolean{
+       return binding.checkBoxConditions.isChecked
+    }
 
 
 
