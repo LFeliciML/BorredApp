@@ -10,11 +10,6 @@ import com.example.borredapp.utils.BorredApp
 
 class InitialFragmentViewModel() : ViewModel() {
 
-
     val result = MutableLiveData<Boolean>()
-
-
-
-
 
 }

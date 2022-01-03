@@ -1,13 +1,15 @@
 package com.example.borredapp.ui.components.mainActivity.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.*
+import androidx.lifecycle.Lifecycle
+import com.example.borredapp.R
 import com.example.borredapp.databinding.InitialFragmentBinding
 import com.example.borredapp.ui.components.ActivitiesActivity.ActivitiesActivity
 import com.example.borredapp.ui.components.mainActivity.viewmodel.InitialFragmentViewModel
@@ -20,12 +22,12 @@ class InitialFragment : Fragment() {
     private lateinit var binding: InitialFragmentBinding
 
 
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = InitialFragmentBinding.inflate(layoutInflater)
-
         binding.buttonStart.setOnClickListener{
 
             val insertUser = binding.etNumberPersons.text.toString()
@@ -43,26 +45,32 @@ class InitialFragment : Fragment() {
                 }
             }
         }
+
+       binding.linkConditions.setOnClickListener {
+          parentFragmentManager.beginTransaction()
+              .add(R.id.fragmentContainerView,ConditionsFragment()).addToBackStack(null).commit()
+       }
+
         return binding.root
     }
 
 
     //This function get sharedPreferences.
-    fun setSharedPreferences(participants:Int){
+    private fun setSharedPreferences(participants:Int){
         val editor = prefs.edit()
         editor.putInt("PARTICIPANTS",participants)
         editor.commit()
     }
 
     //This execute activities activity.
-    fun runActivity(){
+    private fun runActivity(){
         val intent = Intent(this.context, ActivitiesActivity::class.java)
         startActivity(intent)
     }
 
     //This function tries to convert String to int,
     // if the conversion fails, it throws an exception.
-    fun checkIsNumber(number : String) : Boolean{
+    private fun checkIsNumber(number : String) : Boolean{
         try {
             var participants = number.toInt()
             if (participants>=0){
@@ -77,6 +85,8 @@ class InitialFragment : Fragment() {
             return false
         }
     }
+
+
 
 
 
