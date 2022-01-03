@@ -1,6 +1,7 @@
 package com.example.borredapp.ui.components.ActivitiesActivity.adapters
 
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.borredapp.databinding.ItemActivityBinding
 
@@ -13,6 +14,7 @@ class ActivitiesViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.activityName.text = activity
         itemView.setOnClickListener {
             //navegar...
+
         }
     }
 }

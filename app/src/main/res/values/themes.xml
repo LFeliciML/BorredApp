@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <!-- This linea make the upbar desapair -->
-    <style name="Theme.BorredApp" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.BorredApp" parent="Theme.AppCompat.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_blue</item>
         <item name="colorPrimaryVariant">@color/primary_dark_blue</item>

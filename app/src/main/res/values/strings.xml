@@ -4,4 +4,7 @@
     <string name="terms_y_conditions"><u>Terms y conditions</u></string>
     <string name="start">Start</string>
     <string name="participants">Participants</string>
+    <string name="activities">Activities</string>
+    <string name="random">Random</string>
+    <string name="try_another">Try Again</string>
 </resources>
