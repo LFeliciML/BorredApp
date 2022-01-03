@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 class ListActivitiesViewModel : ViewModel() {
 
     //tareas:
-    //sharedPref + interactor -> getActivityByParticipants() Lucas preguntar
+    //sharedPref + interactor -> getActivityByParticipants() Lucas
     //
     //Manejar cantidad de participantes api resp Mauro
     //
@@ -13,6 +13,5 @@ class ListActivitiesViewModel : ViewModel() {
     //recyclerView activities Lucas
     //
     //Filtrar participants
-
 
 }
