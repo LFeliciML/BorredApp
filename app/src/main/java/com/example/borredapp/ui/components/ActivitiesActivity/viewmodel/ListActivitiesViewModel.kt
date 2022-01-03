@@ -14,4 +14,11 @@ class ListActivitiesViewModel : ViewModel() {
     //
     //Filtrar participants
 
+
+    //
+    //Lunes:
+    //item activities
+    //rv
+    //sugerencia screen
+
 }
