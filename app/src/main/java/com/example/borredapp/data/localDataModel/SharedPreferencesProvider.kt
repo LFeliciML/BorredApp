@@ -1,10 +1,12 @@
 package com.example.borredapp.data.localDataModel
 
+import com.example.borredapp.utils.BorredApp
+
 class SharedPreferencesProvider {
 
-    //Tengo que recuperar desde aca el shared. Para esto tengo que heredar de application.
+    //Get the number of participants from the shared preferences.
    fun getParticipants():Int{
-       return 3
+      return BorredApp.prefs.getInt("PARTICIPANTS",0)
    }
 
 }
