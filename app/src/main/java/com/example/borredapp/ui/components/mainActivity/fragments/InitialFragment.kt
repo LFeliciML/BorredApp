@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.*
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.Navigation
 import com.example.borredapp.R
 import com.example.borredapp.databinding.InitialFragmentBinding
 import com.example.borredapp.ui.components.ActivitiesActivity.ActivitiesActivity
@@ -50,8 +51,8 @@ class InitialFragment : Fragment() {
 
         //Start fragment terms and conditions.
         binding.linkConditions.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .add(R.id.fragmentContainerView, ConditionsFragment()).addToBackStack(null).commit()
+            this.view?.let { it1 -> Navigation.findNavController(it1)
+                .navigate(R.id.action_initialFragment_to_conditionsFragment) }
         }
 
         return binding.root
