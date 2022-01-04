@@ -57,6 +57,48 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
+    <EditText
+        android:id="@+id/etNumberPersons"
+        android:layout_width="309dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="164dp"
+        android:background="#FFFFFF"
+        android:backgroundTintMode="add"
+        android:ems="10"
+        android:hapticFeedbackEnabled="false"
+        android:inputType="textPersonName"
+        android:maxLength="5"
+        android:paddingStart="8dp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextFields" />
+
+    <TextView
+        android:id="@+id/tvParticipants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="@string/participants"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/etNumberPersons"
+        app:layout_constraintStart_toStartOf="@+id/etNumberPersons"
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <CheckBox
+        android:id="@+id/checkBox_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/check_text_conditions"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonStart"
@@ -72,7 +114,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-
     <TextView
         android:id="@+id/link_conditions"
         android:layout_width="wrap_content"
@@ -85,43 +126,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
-
-    <EditText
-        android:id="@+id/etNumberPersons"
-        android:layout_width="260dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="178dp"
-        android:background="#FFFFFF"
-        android:backgroundTintMode="add"
-        android:ems="10"
-        android:hapticFeedbackEnabled="false"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvParticipants"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:text="@string/participants"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/etNumberPersons"
-        app:layout_constraintStart_toStartOf="@+id/etNumberPersons" />
-
-    <CheckBox
-        android:id="@+id/checkBox_conditions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="@string/check_text_conditions"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
