@@ -18,7 +18,8 @@ class RepositoryImp() : Repository {
 
         if (call.isSuccessful){
             return response
-        }else {
+
+        }else{
             return null
         }
     }

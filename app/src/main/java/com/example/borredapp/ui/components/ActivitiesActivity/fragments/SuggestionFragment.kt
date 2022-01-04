@@ -28,20 +28,17 @@ class SuggestionFragment : Fragment() {
         val fromActivity = args.activity
         (requireActivity() as AppCompatActivity).supportActionBar?.title = fromActivity
 
-//        viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(
-//            Application()
-//        )).get(SuggestionViewModel::class.java)
 
 
         viewModel.req(fromActivity)
 
         viewModel.dataResponse.observe(viewLifecycleOwner,{
             binding.participantsTxt.text = it?.participants.toString()
-            binding.priceTxt.text = setPrice(it.price)
-            binding.activityTxt.text = it.activity
+            binding.priceTxt.text = it?.price.toString()
+            binding.activityTxt.text = it?.activity.toString()
             if(fromActivity=="random"){
                 binding.activityTxt.isVisible = true
-                binding.activityTxt.text = it.activity
+                binding.activityTxt.text = it?.activity.toString()
             }
         })
 
