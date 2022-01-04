@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listActivitiesFragment">
+
+    <fragment
+        android:id="@+id/listActivitiesFragment"
+        android:name="com.example.borredapp.ui.components.ActivitiesActivity.fragments.ListActivitiesFragment"
+        android:label="activities_list_fragment"
+        tools:layout="@layout/activities_list_fragment" >
+        <action
+            android:id="@+id/action_listActivitiesFragment_to_suggestionFragment"
+            app:destination="@id/suggestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/suggestionFragment"
+        android:name="com.example.borredapp.ui.components.ActivitiesActivity.fragments.SuggestionFragment"
+        android:label="suggestion_fragment"
+        tools:layout="@layout/suggestion_fragment" >
+        <action
+            android:id="@+id/action_suggestionFragment_to_listActivitiesFragment"
+            app:destination="@id/listActivitiesFragment" />
+        <argument
+            android:name="activity"
+            app:argType="string" />
+    </fragment>
+</navigation>

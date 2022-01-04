@@ -2,6 +2,7 @@ package com.example.borredapp.ui.components.ActivitiesActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
 import com.example.borredapp.R
 import com.example.borredapp.databinding.ActivityActivitiesBinding
 import com.example.borredapp.databinding.ActivityMainBinding
@@ -16,11 +17,5 @@ class ActivitiesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityActivitiesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainerViewActivities, ListActivitiesFragment())
-            .commit()
-
-
     }
 }

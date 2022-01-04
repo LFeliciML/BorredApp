@@ -5,4 +5,5 @@ import androidx.lifecycle.ViewModel
 class SuggestionViewModel : ViewModel() {
     //aca deberia tener la peticion y la respuesta a la api
     //
+
 }
