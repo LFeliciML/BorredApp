@@ -1,30 +1,29 @@
 package com.example.borredapp.ui.components.ActivitiesActivity.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.borredapp.data.Repository
 import com.example.borredapp.data.remoteDataModel.network.ActivitieResponse
 import com.example.borredapp.domain.ActivityInteractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SuggestionViewModel(private val activityInteractor: ActivityInteractor?) : ViewModel() {
+class SuggestionViewModel() : ViewModel() {
 
-    constructor() : this(null)
+    private val interactor = ActivityInteractor()
 
-    private val _data = MutableLiveData<ActivitieResponse>()
-    val data: LiveData<ActivitieResponse> get() = _data
+     val dataResponse = MutableLiveData<ActivitieResponse>()
+
 
     fun req(type: String){
         viewModelScope.launch(Dispatchers.IO){
-            val apiResp = activityInteractor?.getActivityByType(type)
+
             withContext(Dispatchers.Main){
-                if(apiResp!=null){
-                    _data.value = apiResp!!
-                }
+
+               dataResponse.postValue( interactor.getActivityByType(type) )
+
+
             }
         }
 
