@@ -11,18 +11,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SuggestionViewModel(private val activityInteractor: ActivityInteractor) : ViewModel() {
-    //private val activityInteractor: ActivityInteractor
+class SuggestionViewModel(private val activityInteractor: ActivityInteractor?) : ViewModel() {
+
+    constructor() : this(null)
 
     private val _data = MutableLiveData<ActivitieResponse>()
     val data: LiveData<ActivitieResponse> get() = _data
 
     fun req(type: String){
         viewModelScope.launch(Dispatchers.IO){
-            val apiResp = activityInteractor.getActivityByType(type)
-
+            val apiResp = activityInteractor?.getActivityByType(type)
             withContext(Dispatchers.Main){
-
                 if(apiResp!=null){
                     _data.value = apiResp!!
                 }

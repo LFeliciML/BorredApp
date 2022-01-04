@@ -40,13 +40,21 @@ class InitialFragment : Fragment() {
         //Event button start
         binding.buttonStart.setOnClickListener{
 
-            val insertValueUser = binding.etNumberPersons.text.toString()
+            if(conditionsAprobed()){
 
-            if (conditionsAprobed() && insertValueUser.isNullOrBlank()){
-                viewModel.startApp(0)
-            } else if (conditionsAprobed() && checkIsNumber(insertValueUser)){
-                viewModel.startApp(insertValueUser.toInt())
+                val insertValueUser = binding.etNumberPersons.text.toString()
+
+                if (insertValueUser.isNullOrBlank()){
+                    viewModel.startApp(0)
+                } else if (checkIsNumber(insertValueUser)){
+                    viewModel.startApp(insertValueUser.toInt())
+                }
+
+            }else{
+                Toast.makeText(this.context,"Falta aprobar terminos y condiciones",Toast.LENGTH_SHORT).show()
             }
+
+
         }
 
         //Start fragment terms and conditions.

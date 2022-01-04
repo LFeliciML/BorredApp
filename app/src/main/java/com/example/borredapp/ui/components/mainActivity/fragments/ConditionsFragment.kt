@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.borredapp.R
 import com.example.borredapp.databinding.ConditionsFragmentBinding
-import com.example.borredapp.databinding.InitialFragmentBinding
-import com.example.borredapp.ui.components.mainActivity.viewmodel.ConditionsFragmentViewModel
 
 class ConditionsFragment : Fragment() {
 
-    private lateinit var viewModel: ConditionsFragmentViewModel
     private lateinit var binding: ConditionsFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +17,7 @@ class ConditionsFragment : Fragment() {
     ): View? {
         binding = ConditionsFragmentBinding.inflate(layoutInflater)
 
+        //event buton back at initialFragment
         binding.bBack.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView,InitialFragment()).commit()

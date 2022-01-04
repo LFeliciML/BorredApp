@@ -19,9 +19,11 @@ import com.example.borredapp.ui.components.ActivitiesActivity.viewmodel.Suggesti
 
 class SuggestionFragment : Fragment() {
 
-    val viewModel: SuggestionViewModel by viewModels()
+    //val viewModel: SuggestionViewModel by viewModels()
     private lateinit var binding: SuggestionFragmentBinding
     private val args: SuggestionFragmentArgs by navArgs()
+
+    val vm = SuggestionViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +39,9 @@ class SuggestionFragment : Fragment() {
 //        )).get(SuggestionViewModel::class.java)
 
 
-        viewModel.req(fromActivity)
+        vm.req(fromActivity)
 
-        viewModel.data.observe(viewLifecycleOwner,{
+        vm.data.observe(viewLifecycleOwner,{
             binding.participantsTxt.text = it.participants.toString()
             binding.priceTxt.text = setPrice(it.price)
             binding.activityTxt.text = it.activity
@@ -50,7 +52,7 @@ class SuggestionFragment : Fragment() {
         })
 
         binding.tryAgainBtn.setOnClickListener {
-            viewModel.req(fromActivity)
+            vm.req(fromActivity)
         }
 
 
