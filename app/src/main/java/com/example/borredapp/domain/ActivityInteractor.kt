@@ -1,15 +1,14 @@
 package com.example.borredapp.domain
 
-import com.example.borredapp.data.Repository
+
 import com.example.borredapp.data.remoteDataModel.network.ActivitieResponse
 import com.example.borredapp.data.RepositoryImp
 import com.example.borredapp.utils.ConverterUrl
 
 
-class ActivityInteractor(
-    private val repository: Repository
-) {
+class ActivityInteractor() {
     private val converterUrl = ConverterUrl()
+    private val repository = RepositoryImp()
 
     //This variable contains the number of participants, retrieves them from shared preferences
     private val participants:Int = repository.getParticipantsSharedPreferences()

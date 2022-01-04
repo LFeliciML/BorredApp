@@ -1,30 +1,23 @@
 package com.example.borredapp.ui.components.ActivitiesActivity.fragments
 
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.borredapp.R
-import com.example.borredapp.data.Repository
 import com.example.borredapp.databinding.SuggestionFragmentBinding
-import com.example.borredapp.domain.ActivityInteractor
 import com.example.borredapp.ui.components.ActivitiesActivity.viewmodel.SuggestionViewModel
 
 class SuggestionFragment : Fragment() {
 
-    //val viewModel: SuggestionViewModel by viewModels()
+
     private lateinit var binding: SuggestionFragmentBinding
     private val args: SuggestionFragmentArgs by navArgs()
+    private val viewModel = SuggestionViewModel()
 
-    val vm = SuggestionViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,28 +28,26 @@ class SuggestionFragment : Fragment() {
         val fromActivity = args.activity
         (requireActivity() as AppCompatActivity).supportActionBar?.title = fromActivity
 
-//        viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(
-//            Application()
-//        )).get(SuggestionViewModel::class.java)
 
         if (fromActivity.lowercase()!="random"){
 
-            vm.req(fromActivity)
+            viewModel.req(fromActivity)
         }
 
-        vm.data.observe(viewLifecycleOwner,{
-            binding.participantsTxt.text = it.participants.toString()
-            binding.priceTxt.text = setPrice(it.price)
-            binding.activityTxt.text = it.activity
+
+
+        viewModel.dataResponse.observe(viewLifecycleOwner,{
+            binding.participantsTxt.text = it?.participants.toString()
+            binding.priceTxt.text = it?.price.toString()
+            binding.activityTxt.text = it?.activity.toString()
             if(fromActivity=="random"){
                 binding.activityTxt.isVisible = true
-                binding.activityTxt.text = it.activity
+                binding.activityTxt.text = it?.activity.toString()
             }
-            Log.e("data en el view: ", it.price.toString())
         })
 
         binding.tryAgainBtn.setOnClickListener {
-            vm.req(fromActivity)
+            viewModel.req(fromActivity)
         }
 
 

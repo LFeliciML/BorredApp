@@ -7,9 +7,8 @@ import com.example.borredapp.utils.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RepositoryImp(
-    private val localDataProviders: SharedPreferencesProvider
-) : Repository {
+class RepositoryImp() : Repository {
+    private val localDataProviders = SharedPreferencesProvider()
 
     override suspend fun getRandomActivity(): ActivitieResponse? {
         val call = getRetrofit().create(APIServiceBored::class.java)
@@ -19,7 +18,8 @@ class RepositoryImp(
 
         if (call.isSuccessful){
             return response
-        }else {
+
+        }else{
             return null
         }
     }
