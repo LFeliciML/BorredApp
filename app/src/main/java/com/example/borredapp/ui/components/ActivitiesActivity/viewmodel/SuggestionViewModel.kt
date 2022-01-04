@@ -17,20 +17,25 @@ class SuggestionViewModel() : ViewModel() {
 
      val dataResponse = MutableLiveData<ActivitieResponse?>()
 
-    fun req(type: String){
+    fun reqByType(type: String){
         println(type)
         viewModelScope.launch(Dispatchers.IO){
 
-            val apiResp = interactor?.getActivityByType(type)
-            Log.e("data: ", apiResp.toString())
-            withContext(Dispatchers.Main){
-                if(apiResp!=null){
-                    //_data.value = apiResp!!
-                }
-            }
+//            val apiResp = interactor?.getActivityByType(type)
+//            Log.e("data: ", apiResp.toString())
+//            withContext(Dispatchers.Main){
+//                if(apiResp!=null){
+//                    //_data.value = apiResp!!
+//                }
+//            }
                 dataResponse.postValue( interactor.getActivityByType(type.lowercase()))
         }
+    }
 
+    fun reqRandom(){
+        viewModelScope.launch(Dispatchers.IO) {
+            dataResponse.postValue(interactor.getActivityRandom())
+        }
     }
 
 }

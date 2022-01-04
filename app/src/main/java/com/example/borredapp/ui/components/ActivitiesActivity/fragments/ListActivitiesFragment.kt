@@ -10,6 +10,7 @@ import com.example.borredapp.databinding.ActivitiesListFragmentBinding
 import com.example.borredapp.ui.components.ActivitiesActivity.adapters.ActivitiesAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 
 
 class ListActivitiesFragment : Fragment() {
@@ -39,7 +40,11 @@ class ListActivitiesFragment : Fragment() {
 
         binding.randomBtn.setOnClickListener{
 
-            //VM to random
+            val action = ListActivitiesFragmentDirections.actionListActivitiesFragmentToSuggestionFragment("random")
+            val navController = this.view?.let { it1 -> Navigation.findNavController(it1) }
+            if (navController != null) {
+                navController.navigate(action)
+            }
         }
 
         val adapter = ActivitiesAdapter(activitiesList)

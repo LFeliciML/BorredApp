@@ -29,16 +29,19 @@ class SuggestionFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = fromActivity
 
 
-        if (fromActivity.lowercase()!="random"){
+        if (fromActivity!="random"){
 
-            viewModel.req(fromActivity)
+            viewModel.reqByType(fromActivity)
+        }
+        else{
+            viewModel.reqRandom()
         }
 
 
 
         viewModel.dataResponse.observe(viewLifecycleOwner,{
             binding.participantsTxt.text = it?.participants.toString()
-            binding.priceTxt.text = it?.price.toString()
+            binding.priceTxt.text = it?.price.toString() //setPrice(it!!.price)
             binding.activityTxt.text = it?.activity.toString()
             binding.actTitle.text= it?.activity
             if(fromActivity=="random"){
@@ -48,7 +51,7 @@ class SuggestionFragment : Fragment() {
         })
 
         binding.tryAgainBtn.setOnClickListener {
-            viewModel.req(fromActivity)
+            viewModel.reqByType(fromActivity)
         }
 
 
