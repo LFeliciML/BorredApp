@@ -40,6 +40,7 @@ class SuggestionFragment : Fragment() {
             binding.participantsTxt.text = it?.participants.toString()
             binding.priceTxt.text = it?.price.toString()
             binding.activityTxt.text = it?.activity.toString()
+            binding.actTitle.text= it?.activity
             if(fromActivity=="random"){
                 binding.activityTxt.isVisible = true
                 binding.activityTxt.text = it?.activity.toString()

@@ -30,12 +30,13 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/actTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="50sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
