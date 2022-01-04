@@ -2,6 +2,7 @@ package com.example.borredapp.ui.components.ActivitiesActivity.fragments
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,8 +39,10 @@ class SuggestionFragment : Fragment() {
 //            Application()
 //        )).get(SuggestionViewModel::class.java)
 
+        if (fromActivity.lowercase()!="random"){
 
-        vm.req(fromActivity)
+            vm.req(fromActivity)
+        }
 
         vm.data.observe(viewLifecycleOwner,{
             binding.participantsTxt.text = it.participants.toString()
@@ -49,6 +52,7 @@ class SuggestionFragment : Fragment() {
                 binding.activityTxt.isVisible = true
                 binding.activityTxt.text = it.activity
             }
+            Log.e("data en el view: ", it.price.toString())
         })
 
         binding.tryAgainBtn.setOnClickListener {

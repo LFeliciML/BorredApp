@@ -1,5 +1,6 @@
 package com.example.borredapp.ui.components.ActivitiesActivity.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +22,7 @@ class SuggestionViewModel(private val activityInteractor: ActivityInteractor?) :
     fun req(type: String){
         viewModelScope.launch(Dispatchers.IO){
             val apiResp = activityInteractor?.getActivityByType(type)
+            Log.e("data: ", apiResp.toString())
             withContext(Dispatchers.Main){
                 if(apiResp!=null){
                     _data.value = apiResp!!
