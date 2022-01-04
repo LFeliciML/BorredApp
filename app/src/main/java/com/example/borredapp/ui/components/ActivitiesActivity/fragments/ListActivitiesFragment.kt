@@ -9,13 +9,12 @@ import com.example.borredapp.ui.components.ActivitiesActivity.viewmodel.ListActi
 import com.example.borredapp.databinding.ActivitiesListFragmentBinding
 import com.example.borredapp.ui.components.ActivitiesActivity.adapters.ActivitiesAdapter
 import androidx.appcompat.app.AppCompatActivity
-
-
+import androidx.fragment.app.viewModels
 
 
 class ListActivitiesFragment : Fragment() {
 
-    private lateinit var viewModel: ListActivitiesViewModel
+    val viewModel: ListActivitiesViewModel by viewModels()
     private lateinit var binding: ActivitiesListFragmentBinding
 
     override fun onCreateView(
@@ -37,6 +36,11 @@ class ListActivitiesFragment : Fragment() {
             "Music",
             "Busywork"
         )
+
+        binding.randomBtn.setOnClickListener{
+
+            //VM to random
+        }
 
         val adapter = ActivitiesAdapter(activitiesList)
         binding.activitiesRv.adapter = adapter
