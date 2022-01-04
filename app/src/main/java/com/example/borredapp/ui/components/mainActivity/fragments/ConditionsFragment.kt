@@ -24,10 +24,7 @@ class ConditionsFragment : Fragment() {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView,InitialFragment()).commit()
         }
-
         return binding.root
-
-
     }
 
 
